@@ -20,7 +20,7 @@ fun loop (dir_ptr: !DIRptr1) : void = let
   val (proof_optional | dir_entry) = readdir (dir_ptr)
 in
     if dir_entry > 0 then let
-        prval Some_v @(proof, f_proof) = proof_optional
+        prval Some_v @(proof, f_proof) = proof_optional  //f_proof is a proof function?
         val str = get_dir_name (!dir_entry)
         prval () = f_proof (proof)
         val () = if (str != "." && str != "..") then (print! ("\t - ") ; println! (str))

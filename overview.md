@@ -12,4 +12,5 @@
 - ☐ check dependencies
     - ☐ check files for `"staload"` lines that are loading `.dats`
 - ☐ build dependencies
+    - ☑  run build commands in shell
 - ☐ build target (bin)
