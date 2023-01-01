@@ -52,7 +52,7 @@ end
 
 val () = println! ("\ncontents of package.toml:")
 val out = fileref_open_exn ("package.toml", file_mode_r)
-val _ = loop(out);
+val () = loop(out);
 val () = fileref_close (out)
 
 
