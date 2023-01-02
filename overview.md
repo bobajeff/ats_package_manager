@@ -3,7 +3,7 @@
 - read arguments (flags) to the command
     - check for `run` or `build` flags
     - check for `--bin` flag
-- ☑ read directory structor
+- ☑ read directory structure
     - ☐ check for `package.toml` 
         - ☑ read `package.toml` 
         - ☐ parse toml file
