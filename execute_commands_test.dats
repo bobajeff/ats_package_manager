@@ -14,5 +14,12 @@ val () = fileref_close (out)
 // --------------RUN BUILD COMMAND ON TEST FILE--------------
 val () = ignoret($STDLIB.system("patscc hello.dats -o hello && ./hello"))
 
-
-implement main0 () = ()
+// --------------CHECK FLAGS PASSED TO PROGRAM--------------
+implement main0 {n} (argc, argv) = let
+    fun loop (i: natLte(n), argv: !argv(n)): void =
+    if i < argc then
+        (println! ("argv(", i, ") = ", argv[i]); loop (i+1, argv))
+    else ()
+in
+    loop (1, argv)
+end

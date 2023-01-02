@@ -1,8 +1,8 @@
 # Overview for making a package manager
 
-- read arguments (flags) to the command
-    - check for `run` or `build` flags
-    - check for `--bin` flag
+- ☑ read arguments (flags) to the command
+    - ☐ check for `run` or `build` flags
+    - ☐ check for `--bin` flag
 - ☑ read directory structure
     - ☐ check for `package.toml` 
         - ☑ read `package.toml` 
