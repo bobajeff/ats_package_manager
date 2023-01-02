@@ -11,9 +11,15 @@
             - ☐ get `name` and `path` if exists
     - ☐ confirm `/src` directory and `main.dats` or `lib.dats`
     - ☐ check for `build.dats`
+        - ☐ validate `build.dats` is compatible with the package manager
     - ☐ check for `/src/bin`
-- ☐ check dependencies
-    - ☐ check files for `"staload"` lines that are loading `.dats`
-- ☐ build dependencies
-    - ☑  run build commands in shell
 - ☐ build target (bin)
+    - ☑  run build commands in shell
+    - ☐ build dependencies
+        - ☐ create dependency graph
+            - ☐ check files for `"staload"` lines that are loading `.dats`
+            - ☐ create and run build instructions
+            - ☐ execute build instructions
+                - ☐ skip over source files that haven't changed since last build
+                    where the object file is still present
+                - ☐ catch errors in the execution of build commands
