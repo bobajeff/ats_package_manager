@@ -17,6 +17,7 @@ val () = ignoret($STDLIB.system("patscc hello.dats -o hello && ./hello"))
 // --------------CHECK FLAGS PASSED TO PROGRAM--------------
 implement main0 {n} (argc, argv) = let
     fun loop (i: natLte(n), argv: !argv(n)): void =
+    // i has to be less than or equal to argv size
     if i < argc then
         (println! ("argv(", i, ") = ", argv[i]); loop (i+1, argv))
     else ()
