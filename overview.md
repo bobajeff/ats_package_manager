@@ -3,9 +3,9 @@
 - ☑ read arguments (flags) to the command
     - ☐ check for `run` or `build` flags
     - ☐ check for `--bin` flag
-- ☑ read directory structure
+- ☐ read directory structure
     - ☐ check for `package.toml` 
-        - ☑ read `package.toml` 
+        - ☐ read `package.toml` 
         - ☐ parse toml file
         - ☐ check for `[bin]` section
             - ☐ get `name` and `path` if exists
@@ -14,7 +14,7 @@
         - ☐ validate `build.dats` is compatible with the package manager
     - ☐ check for `/src/bin`
 - ☐ build target (bin)
-    - ☑  run build commands in shell
+    - ☐  run build commands in shell
     - ☐ build dependencies
         - ☐ create dependency graph
             - ☐ check files for `"staload"` lines that are loading `.dats`
