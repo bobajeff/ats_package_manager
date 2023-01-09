@@ -5,9 +5,9 @@
 atspm build - should build all the binaries
 atspm build --bin - should print out all the avaiable binaries
 atspm build --bin <binary> - should build the given binary
-atspm run - should build the main.dats binary or the binary specified by
-default-run if multiple biniaries are available atspm run --bin <binary> -
-should build then run the given binary
+atspm run - should build the main.dats binary or the binary specified
+    by default-run if multiple biniaries are available
+atspm run --bin <binary> - should build then run the given binary
 */
 int search_package_for_binaries(char *temp[]) {
   // example values
@@ -32,7 +32,8 @@ int process_subcommand(char *cmd) {
 
 int main(int argc, char *argv[]) {
   int counter;
-  char *available_binaries[10]; //FIX: ** Who will ever have more than 10 binaries in a project? **
+  char *available_binaries[10]; // FIX: ** Who will ever have more than 10
+                                // binaries in a project? **
   int bin_count = search_package_for_binaries(available_binaries);
 
   // argc number or args pass including the command run
