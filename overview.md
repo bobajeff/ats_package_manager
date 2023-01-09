@@ -1,5 +1,15 @@
 # Overview for making a package manager
 
+## Basic Plan
+
+- do project in C
+- port it to unsafe ATS
+    - don't try make use of any standard libraries 
+    - keep it as much to the core language as possible. Making libraries if need be along the way.
+- learn to make it safe.
+    - gradually play with type checking features of ATS
+
+## Requirements
 - ☑ read arguments (flags) to the command
     - ☐ check for `run` or `build` flags
     - ☐ check for `--bin` flag
