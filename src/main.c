@@ -1,4 +1,6 @@
+#include <dirent.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 /*
@@ -9,11 +11,39 @@ atspm run - should build the main.dats binary or the binary specified
     by default-run if multiple biniaries are available
 atspm run --bin <binary> - should build then run the given binary
 */
-int search_package_for_binaries(char *temp[]) {
-  // example values
-  int bin_count = 2;
-  temp[0] = "foo";
-  temp[1] = "bar";
+int search_package_for_binaries(char *available_binaries[]) {
+  // * add main.dats to available_binaries as "<projec_name>"
+  // * search src/bin directory for filenames and foldernames
+  //   and add those.
+  int offset = 0;
+  int bin_count = 0;
+  DIR *d;
+  struct dirent *dir;
+
+  d = opendir("src/bin/");
+  if (d) {
+    while ((dir = readdir(d)) != NULL) {
+      // gaurd against going over the max size of available_binaries array
+      if (offset > 10) {
+        break;
+      }
+      // find .dats files
+      if (strstr(dir->d_name, ".dats") != NULL) {
+        // extract the stem from the filename
+        char *pointer_to_end_of_stem = strstr(dir->d_name, ".dats");
+        if (pointer_to_end_of_stem != NULL) {
+          // subtract pointer to string from pointer to end of (filename) stem
+          size_t stem_length = pointer_to_end_of_stem - dir->d_name;
+          // save it to available_binaries
+          available_binaries[offset++] = strndup(dir->d_name, stem_length);
+          bin_count++; // don't really need both bin_count and offset variables
+        }
+      }
+    }
+    closedir(d);
+  } else {
+    printf("\t** no src/bin/ in project! **\n\n");
+  }
   return bin_count;
 }
 int process_subcommand(char *cmd) {
@@ -54,9 +84,6 @@ int main(int argc, char *argv[]) {
            "\n\nSee 'atspm help <command>' for more information on a "
            "specific command.\n");
   if (argc >= 2) {
-    for (counter = 0; counter < argc; counter++) {
-      printf("argv[%d]: %s\n", counter, argv[counter]);
-    }
     int subcommand = process_subcommand(argv[1]);
     switch (subcommand) {
     case 1: // Build
