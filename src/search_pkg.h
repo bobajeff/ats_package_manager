@@ -1,0 +1,1 @@
+int search_package_for_binaries(char *available_binaries[]);
